@@ -83,12 +83,8 @@ public class Node {
 
     public void draw(Graphics2D g, JPanel panel) {
         switch (type) {
-            case START:
-                g.setColor(Color.green);
-                break;
-            case END:
-                g.setColor(Color.red);
-                break;
+            case START -> g.setColor(Color.green);
+            case END -> g.setColor(Color.red);
         }
 
         g.fillRect(x * SIZE, y * SIZE, SIZE, SIZE);
