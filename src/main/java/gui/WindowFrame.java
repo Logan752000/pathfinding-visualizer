@@ -5,11 +5,13 @@ import java.awt.*;
 
 public class WindowFrame extends JFrame {
     private static final int SIZE = 1200;
+    private static int rows = 1000 / Node.SIZE;
+    private static int cols = 1000 / Node.SIZE;
 
     public WindowFrame() {
         ControlPanel controlPanel = new ControlPanel();
         LegendPanel legendPanel = new LegendPanel();
-        GridPanel gridPanel = new GridPanel();
+        GridPanel gridPanel = new GridPanel(rows, cols);
 
         JFrame windowFrame = new JFrame("Pathfinding Visualizer");
         windowFrame.setSize(SIZE, SIZE);
@@ -25,5 +27,6 @@ public class WindowFrame extends JFrame {
         windowFrame.add(controlPanel, BorderLayout.NORTH);
         windowFrame.add(legendPanel, BorderLayout.EAST);
         windowFrame.add(gridPanel);
+        windowFrame.pack();
     }
 }

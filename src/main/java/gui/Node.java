@@ -1,9 +1,14 @@
 package gui;
 
+import javax.swing.*;
+import java.awt.*;
+
 public class Node {
     private final int x, y;
+    private Type type = Type.DEFAULT;
     private Node up, down, left, right;
     private boolean start, end;
+    public static int SIZE = 50;
 
     public Node(int x, int y) {
         this.x = x;
@@ -55,6 +60,11 @@ public class Node {
     }
 
     public void setStart(boolean start) {
+        if (start) {
+            this.type = Type.START;
+        } else {
+            this.type = Type.DEFAULT;
+        }
         this.start = start;
     }
 
@@ -63,6 +73,26 @@ public class Node {
     }
 
     public void setEnd(boolean end) {
+        if (end) {
+            this.type = Type.END;
+        } else {
+            this.type = Type.DEFAULT;
+        }
         this.end = end;
+    }
+
+    public void draw(Graphics2D g, JPanel panel) {
+        switch (type) {
+            case START:
+                g.setColor(Color.green);
+                break;
+            case END:
+                g.setColor(Color.red);
+                break;
+        }
+
+        g.fillRect(x * SIZE, y * SIZE, SIZE, SIZE);
+        panel.revalidate();
+        panel.repaint();
     }
 }

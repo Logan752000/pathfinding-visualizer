@@ -1,17 +1,20 @@
 package gui;
 
+import javax.swing.*;
+import java.awt.*;
 import java.util.Arrays;
 
 public class Grid {
-    private Node[][] grid;
-    private int rows, cols;
-    private int nodeSize;
+    private final Node[][] grid;
+    public Node start;
+    public Node end;
+    private final int rows, cols;
 
-    public Grid(int rows, int cols, int nodeSize) {
+    public Grid(int rows, int cols) {
         this.grid = new Node[cols][rows];
         this.rows = rows;
         this.cols = cols;
-        this.nodeSize = nodeSize;
+        initializeGrid();
     }
 
     public void initializeGrid() {
@@ -26,6 +29,11 @@ public class Grid {
                 setNeighbors(row, col);
             }
         }
+
+        start = grid[0][0];
+        start.setStart(true);
+        end = grid[cols-1][rows-1];
+        end.setEnd(true);
     }
 
     private void setNeighbors(int row, int col) {
@@ -51,5 +59,25 @@ public class Grid {
                 }
             }
         }
+    }
+
+    public Node getNode(int x, int y) {
+        return grid[x][y];
+    }
+
+    public Node getStart() {
+        return start;
+    }
+
+    public void setStart(Node start) {
+        this.start = start;
+    }
+
+    public Node getEnd() {
+        return end;
+    }
+
+    public void setEnd(Node end) {
+        this.end = end;
     }
 }
