@@ -5,8 +5,8 @@ import java.awt.*;
 
 public class WindowFrame extends JFrame {
     private static final int SIZE = 1200;
-    private static int rows = 600 / Node.SIZE;
-    private static int cols = 600 / Node.SIZE;
+    private static int rows = 500 / Node.SIZE;
+    private static int cols = 500 / Node.SIZE;
 
     public WindowFrame() {
         ControlPanel controlPanel = new ControlPanel();
